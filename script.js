@@ -68,7 +68,7 @@ const spiritScores = {
   Mubii: 0,
   Onyun: 0,
   Bitty: 0,
-  Jinger: 0
+  Gingeer: 0
 };
 
 const spiritProfiles = {
@@ -101,7 +101,7 @@ const spiritProfiles = {
     img: "images/mubii.png",
     ability: "Repels toxic vibes.",
     personality: "Quiet protector.",
-    friend: "Jinger",
+    friend: "Gingeer",
     enemy: null
   },
   Onyun: {
@@ -118,11 +118,11 @@ const spiritProfiles = {
     ability: "Sparks hope through humor.",
     personality: "Small, cheerful, sensitive.",
     friend: "Kroot",
-    enemy: "Jinger"
+    enemy: "Gingeer"
   },
-  Jinger: {
-    name: "Jinger",
-    img: "images/jinger.png",
+  Gingeer: {
+    name: "Gingeer",
+    img: "images/Gingeer.png",
     ability: "Gives clarity and calm wisdom.",
     personality: "Wise, warm, realistic.",
     friend: "Mubii",
