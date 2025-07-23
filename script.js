@@ -1,67 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spirit Veggie Finder</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Poppins&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff9ec;
-      color: #333;
-      padding: 2rem;
-    }
-    h1, h2, h3 {
-      font-family: 'Fredoka', sans-serif;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-    }
-    .question-box {
-      margin-bottom: 2rem;
-    }
-    .options button {
-      display: block;
-      margin: 0.5rem 0;
-      padding: 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #c6ff00;
-      font-size: 1rem;
-      cursor: pointer;
-      font-family: 'Fredoka';
-    }
-    #next-btn {
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      background-color: #b2ff59;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-family: 'Poppins';
-      cursor: pointer;
-    }
-    .result {
-      background-color: #fff3d1;
-      padding: 2rem;
-      border-radius: 12px;
-      margin-top: 2rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Which Spirit Veggie do you need today?</h1>
-    <div id="quiz"></div>
-    <button id="next-btn" style="display:none">Next</button>
-    <div id="result" class="result" style="display:none"></div>
-  </div>
+const startBtn = document.getElementById("start-btn");
+const homeSection = document.getElementById("home");
+const quizSection = document.getElementById("quiz");
+const resultSection = document.getElementById("result");
+btn.classList.add("button-55");
 
-  <script>
-    const questions = [
+const questions = [
   "When you're completely stuck, you tend to...",
   "In your ideal world, people would...",
   "Which emotion is the hardest for you to control?",
@@ -100,145 +43,152 @@ const options = [
 ];
 
 const spiritMap = [
-  ["Mubii", "Onyun", "Banion", "Kroot", "Jinger"],
-  ["Bitty", "Mubii", "Jinger", "Banion", "Onyun"],
-  ["Potatoad", "Onyun", "Banion", "Bitty", "Jinger"],
-  ["Banion", "Jinger", "Onyun", "Kroot", "Mubii"],
-  ["Banion", "Potatoad", "Jinger", "Mubii", "Bitty"],
-  ["Onyun", "Kroot", "Banion", "Mubii", "Jinger"],
-  ["Jinger", "Banion", "Bitty", "Kroot", "Potatoad"],
-  ["Bitty", "Potatoad", "Jinger", "Mubii", "Onyun"],
-  ["Mubii", "Jinger", "Banion", "Kroot", "Bitty"],
-  ["Onyun", "Bitty", "Potatoad", "Jinger", "Mubii"],
-  ["Mubii", "Banion", "Potatoad", "Onyun", "Jinger"],
-  ["Bitty", "Banion", "Jinger", "Mubii", "Kroot"],
-  ["Jinger", "Potatoad", "Kroot", "Onyun", "Bitty"],
-  ["Onyun", "Bitty", "Jinger", "Banion", "Mubii"],
-  ["Jinger", "Banion", "Kroot", "Bitty", "Mubii"],
-  ["Onyun", "Banion", "Kroot", "Jinger", "Mubii"]
+  ["Mubii", "Onyun", "Banion", "Kroot", "Gingeer"],
+  ["Bitty", "Mubii", "Gingeer", "Banion", "Onyun"],
+  ["Potatoad", "Onyun", "Banion", "Bitty", "Gingeer"],
+  ["Banion", "Gingeer", "Onyun", "Kroot", "Mubii"],
+  ["Banion", "Potatoad", "Gingeer", "Mubii", "Bitty"],
+  ["Onyun", "Kroot", "Banion", "Mubii", "Gingeer"],
+  ["Gingeer", "Banion", "Bitty", "Kroot", "Potatoad"],
+  ["Bitty", "Potatoad", "Gingeer", "Mubii", "Onyun"],
+  ["Mubii", "Gingeer", "Banion", "Kroot", "Bitty"],
+  ["Onyun", "Bitty", "Potatoad", "Gingeer", "Mubii"],
+  ["Mubii", "Banion", "Potatoad", "Onyun", "Gingeer"],
+  ["Bitty", "Banion", "Gingeer", "Mubii", "Kroot"],
+  ["Gingeer", "Potatoad", "Kroot", "Onyun", "Bitty"],
+  ["Onyun", "Bitty", "Gingeer", "Banion", "Mubii"],
+  ["Gingeer", "Banion", "Kroot", "Bitty", "Mubii"],
+  ["Onyun", "Banion", "Kroot", "Gingeer", "Mubii"]
 ];
 
+const spiritScores = {
+  Kroot: 0,
+  Banion: 0,
+  Potatoad: 0,
+  Mubii: 0,
+  Onyun: 0,
+  Bitty: 0,
+  Gingeer: 0
+};
 
-    const spiritScores = {
-      Kroot: 0,
-      Banion: 0,
-      Potatoad: 0,
-      Mubii: 0,
-      Onyun: 0,
-      Bitty: 0,
-      Jinger: 0
-    };
+const spiritProfiles = {
+  Kroot: {
+    name: "Kroot",
+    img: "images/kroot.png",
+    ability: "Helps you feel heard and safe.",
+    personality: "Sarcastic but secretly soft-hearted.",
+    friend: "Bitty",
+    enemy: null
+  },
+  Banion: {
+    name: "Banion",
+    img: "images/banion.png",
+    ability: "Helps you release pent-up emotions.",
+    personality: "Emotional, warm, intuitive.",
+    friend: "Mubii",
+    enemy: "Onyun"
+  },
+  Potatoad: {
+    name: "Potatoad",
+    img: "images/potatoad.png",
+    ability: "Teaches you that rest is valid.",
+    personality: "Chill, adorable, sleepy.",
+    friend: "Onyun",
+    enemy: null
+  },
+  Mubii: {
+    name: "Mubii",
+    img: "images/mubii.png",
+    ability: "Repels toxic vibes.",
+    personality: "Quiet protector.",
+    friend: "Gingeer",
+    enemy: null
+  },
+  Onyun: {
+    name: "Onyun",
+    img: "images/onyun.png",
+    ability: "Fiercely loyal, protects your heart.",
+    personality: "Reactive, barky, loyal.",
+    friend: "Potatoad",
+    enemy: "Banion"
+  },
+  Bitty: {
+    name: "Bitty",
+    img: "images/bitty.png",
+    ability: "Sparks hope through humor.",
+    personality: "Small, cheerful, sensitive.",
+    friend: "Kroot",
+    enemy: "Gingeer"
+  },
+  Gingeer: {
+    name: "Gingeer",
+    img: "images/Gingeer.png",
+    ability: "Gives clarity and calm wisdom.",
+    personality: "Wise, warm, realistic.",
+    friend: "Mubii",
+    enemy: "Bitty"
+  }
+};
 
-    const spiritProfiles = {
-      Kroot: {
-        name: "Kroot",
-        ability: "Helps you feel grounded during emotional storms.",
-        personality: "Tsundere caring. Cares deeply but won’t remind you twice.",
-        for: "Those who feel lost or floating",
-        friend: "Potatoad",
-        enemy: "Overthinking"
-      },
-      Banion: {
-        name: "Banion",
-        ability: "Let your tears out and feel emotionally balanced.",
-        personality: "Mischievous but cathartic. Makes you cry but you feel lighter after.",
-        for: "Those who suppress emotions",
-        friend: "Mubii",
-        enemy: "Bottled feelings"
-      },
-      Potatoad: {
-        name: "Potatoad",
-        ability: "Reminds you that rest matters.",
-        personality: "Soft, sleepy, gemesin. Prioritizes naps and slow days.",
-        for: "Those who overwork",
-        friend: "Kroot",
-        enemy: "Burnout"
-      },
-      Mubii: {
-        name: "Mubii",
-        ability: "Blocks toxic energy and protects your peace.",
-        personality: "Quiet but strong. Your ninja against negative people.",
-        for: "Those in toxic environments",
-        friend: "Bitty",
-        enemy: "Toxic people"
-      },
-      Onyun: {
-        name: "Onyun",
-        ability: "Protects emotional vulnerability with loyal bark.",
-        personality: "Like a dog: loyal, barky, but soft inside.",
-        for: "Those who cry but hide",
-        friend: "Banion",
-        enemy: "Fake comfort"
-      },
-      Bitty: {
-        name: "Bitty",
-        ability: "Lifts sadness quietly, helps you find light in the dark.",
-        personality: "Tiny, cheerful, but deep. Hides pain with jokes.",
-        for: "Those masking their pain",
-        friend: "Jinger",
-        enemy: "Hopelessness"
-      },
-      Jinger: {
-        name: "Jinger",
-        ability: "Keeps your spirit warm like forest sunlight.",
-        personality: "Wise, warm, soft like a deer in fog.",
-        for: "Those who feel too cold or unseen",
-        friend: "Bitty",
-        enemy: "Isolation"
+let currentQ = 0;
+let selected = [];
+
+startBtn.onclick = () => {
+  homeSection.style.display = "none";
+  quizSection.style.display = "block";
+  renderQuestion();
+};
+
+function renderQuestion() {
+  quizSection.innerHTML = `
+    <div class="question-box">
+      <h2>${questions[currentQ]}</h2>
+      <div class="options"></div>
+    </div>
+  `;
+  const optDiv = quizSection.querySelector(".options");
+  options[currentQ].forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.innerText = opt;
+    btn.onclick = () => {
+      selected.push(i);
+      currentQ++;
+      if (currentQ < questions.length) {
+        renderQuestion();
+      } else {
+        calculateResult();
       }
     };
+    optDiv.appendChild(btn);
+  });
+}
 
-    let currentQ = 0;
-    let selected = [];
+function calculateResult() {
+  selected.forEach((choiceIndex, questionIndex) => {
+    const spirit = spiritMap[questionIndex][choiceIndex];
+    spiritScores[spirit]++;
+  });
 
-    const quiz = document.getElementById("quiz");
-    const nextBtn = document.getElementById("next-btn");
-    const resultDiv = document.getElementById("result");
+  const topSpirit = Object.entries(spiritScores).sort((a, b) => b[1] - a[1])[0][0];
+  showResult(topSpirit);
+}
 
-    function renderQuestion() {
-      quiz.innerHTML = `<div class="question-box"><h2>${questions[currentQ]}</h2><div class="options"></div></div>`;
-      const optDiv = quiz.querySelector(".options");
-      options[currentQ].forEach((opt, i) => {
-        const btn = document.createElement("button");
-        btn.innerText = opt;
-        btn.onclick = () => {
-          selected.push(i);
-          currentQ++;
-          if (currentQ < questions.length) {
-            renderQuestion();
-          } else {
-            calculateResult();
-          }
-        };
-        optDiv.appendChild(btn);
-      });
-    }
+function showResult(spiritKey) {
+  const spirit = spiritProfiles[spiritKey];
+  const friendImg = spiritProfiles[spirit.friend]?.img;
+  const enemyImg = spirit.enemy ? spiritProfiles[spirit.enemy]?.img : null;
 
-    function calculateResult() {
-      selected.forEach(index => {
-        const spirit = Object.keys(spiritScores)[index % 7];
-        spiritScores[spirit] += 1;
-      });
-      const topSpirit = Object.entries(spiritScores).sort((a, b) => b[1] - a[1])[0][0];
-      showResult(topSpirit);
-    }
-
-    function showResult(spiritKey) {
-      const spirit = spiritProfiles[spiritKey];
-      quiz.style.display = "none";
-      nextBtn.style.display = "none";
-      resultDiv.style.display = "block";
-      resultDiv.innerHTML = `
-        <h2>You need: ${spirit.name}</h2>
-        <p><strong>Personality:</strong> ${spirit.personality}</p>
-        <p><strong>Ability:</strong> ${spirit.ability}</p>
-        <p><strong>Cocok untuk:</strong> ${spirit.for}</p>
-        <p><strong>Grounding Friend:</strong> ${spirit.friend}</p>
-        <p><strong>Enemy Spirit:</strong> ${spirit.enemy}</p>
-      `;
-    }
-
-    renderQuestion();
-  </script>
-</body>
-</html>
+  quizSection.style.display = "none";
+  resultSection.style.display = "block";
+  resultSection.innerHTML = `
+    <h2>Your Spirit Veggie is: ${spirit.name}</h2>
+    <img src="${spirit.img}" alt="${spirit.name}" />
+    <p><strong>Personality:</strong> ${spirit.personality}</p>
+    <p><strong>Ability:</strong> ${spirit.ability}</p>
+    <h3>Spirit Friend:</h3>
+    <img src="${friendImg}" alt="${spirit.friend}" />
+    <h3>Enemy Spirit:</h3>
+    ${enemyImg ? `<img src="${enemyImg}" alt="${spirit.enemy}" />` : `<p>No known enemies</p>`}
+  `;
+}
+~
