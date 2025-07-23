@@ -149,6 +149,25 @@ function renderQuestion() {
   options[currentQ].forEach((opt, i) => {
     const btn = document.createElement("button");
     btn.innerText = opt;
+    btn.classList.add("button-55"); // ✅ Tambahkan class ini
+    btn.onclick = () => {
+      selected.push(i);
+      currentQ++;
+      if (currentQ < questions.length) {
+        renderQuestion();
+      } else {
+        calculateResult();
+      }
+    };
+    optDiv.appendChild(btn);
+  });
+}
+
+  `;
+  const optDiv = quizSection.querySelector(".options");
+  options[currentQ].forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.innerText = opt;
     btn.onclick = () => {
       selected.push(i);
       currentQ++;
