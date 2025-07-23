@@ -4,6 +4,76 @@ const quizSection = document.getElementById("quiz");
 const resultSection = document.getElementById("result");
 const usernameInput = document.getElementById("name-input");
 
+
+// Animate the home section on load
+window.addEventListener('DOMContentLoaded', () => {
+  gsap.from("#home h1", {
+    y: -50,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out"
+  });
+
+  gsap.from(".veggie-mascot", {
+    scale: 0,
+    opacity: 0,
+    stagger: 0.2,
+    duration: 0.8,
+    ease: "back.out(1.7)"
+  });
+
+  gsap.from(".intro-text", {
+    x: 50,
+    opacity: 0,
+    duration: 1,
+    delay: 0.8,
+    ease: "power2.out"
+  });
+
+  gsap.from(".InputContainer", {
+    y: 30,
+    opacity: 0,
+    duration: 0.7,
+    delay: 1.2
+  });
+
+  gsap.from("#start-btn", {
+    scale: 0.8,
+    opacity: 0,
+    duration: 0.6,
+    delay: 1.5
+  });
+});
+
+// Button hover effect
+startBtn.addEventListener('mouseenter', () => {
+  gsap.to(startBtn, { scale: 1.05, backgroundColor: "#ffe066", duration: 0.2 });
+});
+startBtn.addEventListener('mouseleave', () => {
+  gsap.to(startBtn, { scale: 1, backgroundColor: "#fff", duration: 0.2 });
+});
+
+// Mascot wiggle on hover
+document.querySelectorAll('.veggie-mascot').forEach(img => {
+  img.addEventListener('mouseenter', () => {
+    gsap.to(img, { rotation: 15, yoyo: true, repeat: 1, duration: 0.2 });
+  });
+  img.addEventListener('mouseleave', () => {
+    gsap.to(img, { rotation: 0, duration: 0.2 });
+  });
+});
+
+// Animate transition to quiz section (example)
+startBtn.addEventListener('click', () => {
+  gsap.to("#home", {
+    opacity: 0, y: -50, duration: 0.5, onComplete: () => {
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('quiz').style.display = 'block';
+      gsap.from("#quiz", { opacity: 0, y: 50, duration: 0.5 });
+    }
+  });
+});
+
 const questions = [
   "When you're completely stuck, you tend to...",
   "In your ideal world, people would...",
@@ -169,9 +239,9 @@ function renderQuestion() {
       <h2>(${currentQ + 1}/${total}) ${questionText}</h2>
       <div class="options">
         ${opts.map((opt, i) => {
-          const isSelected = selected[currentQ] === i ? 'selected-option' : '';
-          return `<button class="button-55 ${isSelected}" onclick="selectOption(${i})">${opt}</button>`;
-        }).join('')}
+    const isSelected = selected[currentQ] === i ? 'selected-option' : '';
+    return `<button class="button-55 ${isSelected}" onclick="selectOption(${i})">${opt}</button>`;
+  }).join('')}
       </div>
       <div>
         ${currentQ > 0 ? `<button class="button-55" onclick="goBack()">Back</button>` : ''}
@@ -223,9 +293,9 @@ function renderQuestion() {
       <h2>(${currentQ + 1}/${total}) ${questionText}</h2>
       <div class="options">
         ${opts.map((opt, i) => {
-          const isSelected = selected[currentQ] === i ? 'selected-option' : '';
-          return `<button class="button-55 ${isSelected}" onclick="selectOption(${i})">${opt}</button>`;
-        }).join('')}
+    const isSelected = selected[currentQ] === i ? 'selected-option' : '';
+    return `<button class="button-55 ${isSelected}" onclick="selectOption(${i})">${opt}</button>`;
+  }).join('')}
       </div>
       <div>
         ${currentQ > 0 ? `<button class="button-55" onclick="goBack()">Back</button>` : ''}
@@ -252,19 +322,17 @@ function showResult(spiritKey) {
     <div class="spirit-relations">
       <div>
         <p><strong>Friend</strong></p>
-        ${
-          friendImg
-            ? `<img src="${friendImg}" alt="${spirit.friend}" class="side-spirit-img" />`
-            : `<p>No bestie found</p>`
-        }
+        ${friendImg
+      ? `<img src="${friendImg}" alt="${spirit.friend}" class="side-spirit-img" />`
+      : `<p>No bestie found</p>`
+    }
       </div>
       <div>
         <p><strong>Enemy</strong></p>
-        ${
-          enemyImg
-            ? `<img src="${enemyImg}" alt="${spirit.enemy}" class="side-spirit-img" />`
-            : `<p>No known enemies</p>`
-        }
+        ${enemyImg
+      ? `<img src="${enemyImg}" alt="${spirit.enemy}" class="side-spirit-img" />`
+      : `<p>No known enemies</p>`
+    }
       </div>
     </div>
 
