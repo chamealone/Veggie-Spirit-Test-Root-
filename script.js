@@ -3,6 +3,7 @@ const homeSection = document.getElementById("home");
 const quizSection = document.getElementById("quiz");
 const resultSection = document.getElementById("result");
 const usernameInput = document.getElementById("username");
+
 const questions = [
   "When you're completely stuck, you tend to...",
   "In your ideal world, people would...",
