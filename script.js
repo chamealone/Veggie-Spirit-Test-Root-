@@ -149,6 +149,7 @@ function renderQuestion() {
   options[currentQ].forEach((opt, i) => {
     const btn = document.createElement("button");
     btn.innerText = opt;
+    btn.classList.add("button-55"); // ✅ Tambahkan class button-55
     btn.onclick = () => {
       selected.push(i);
       currentQ++;
@@ -190,4 +191,3 @@ function showResult(spiritKey) {
     ${enemyImg ? `<img src="${enemyImg}" alt="${spirit.enemy}" />` : `<p>No known enemies</p>`}
   `;
 }
-
