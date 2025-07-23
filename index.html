@@ -2,30 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spirit Veggie Test</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <main>
-    <section id="home">
-      <h1>What Spirit Veggie Do You Need Today?</h1>
-      <img src="images/cover.png" alt="Spirit Veggie Cover" class="cover-img" />
-      <p>Welcome to the Spirit Veggie Test — a gentle personality quiz to find out which healing veggie your soul needs right now. Each Spirit Veggie is a small guardian for a different kind of emotional need: grounding, crying, hope, quiet, or soft protection. Ready to meet yours?</p>
-      
-      <div class="InputContainer">
-        <input type="text" id="username" class="input" placeholder="Hi, what's your name?" />
-      </div>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #b5ce8a;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      padding: 20px;
+    }
 
-      <button id="start-btn" class="button-55">Start the Test</button>
-    </section>
+    .button-55 {
+      background-color: #fff;
+      border: 2px solid #333;
+      border-radius: 20px;
+      padding: 0.7rem 1.5rem;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
 
-    <section id="quiz" style="display: none;"></section>
-    <section id="result" style="display: none;"></section>
-  </main>
-</body>
-<script src="script.js"></script>
-</html>
+    .button-55:hover {
+      background-color: #f0f0f0;
+    }
 
+    .question-box {
+      margin-top: 30px;
+    }
 
+    .selected-option {
+      background-color: #ffe0b2;
+      border: 2px solid #ff9800;
+    }
+
+    .main-spirit-img {
+      width: 200px;
+      max-width: 80%;
+      margin: 20px auto;
+    }
+
+    .spirit-relations {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      align-items: center;
+      margin: 30px 0;
+    }
+
+    .side-spirit-img {
+      width: 100px;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .InputContainer {
+      width: 210px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+      border-radius: 30px;
+      overflow: hidden;
+      margin: 20px auto;
