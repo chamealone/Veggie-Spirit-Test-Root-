@@ -213,50 +213,28 @@ function calculateResult() {
   showResult(topSpirit);
 }
 
-function showResult(spiritKey) {
-  const spirit = spiritProfiles[spiritKey];
-  const name = usernameInput.value.trim();
+function renderQuestion() {
+  const total = questions.length;
+  const questionText = questions[currentQ];
+  const opts = options[currentQ];
 
-  const friendImg = spirit.friend ? `images/${spiritProfiles[spirit.friend].img}` : null;
-  const enemyImg = spirit.enemy ? `images/${spiritProfiles[spirit.enemy]?.img}` : null;
-
-  resultSection.innerHTML = `
-    <h2>${name}, your Spirit Veggie is:</h2>
-    <h3>${spirit.name}</h3>
-    <img src="images/${spirit.img}" alt="${spirit.name}" class="main-spirit-img" />
-    <p><strong>Description:</strong> ${spirit.description}</p>
-    <p><strong>Ability:</strong> ${spirit.ability}</p>
-    <p><strong>Supports:</strong> ${spirit.supports}</p>
-
-    <div class="spirit-relations">
-      <div>
-        <p><strong>Friend</strong></p>
-        ${
-          friendImg
-            ? `<img src="${friendImg}" alt="${spirit.friend}" class="side-spirit-img" />`
-            : `<p>No bestie found</p>`
-        }
+  quizSection.innerHTML = `
+    <div class="question-box">
+      <h2>(${currentQ + 1}/${total}) ${questionText}</h2>
+      <div class="options">
+        ${opts.map((opt, i) => {
+          const isSelected = selected[currentQ] === i ? 'selected-option' : '';
+          return `<button class="button-55 ${isSelected}" onclick="selectOption(${i})">${opt}</button>`;
+        }).join('')}
       </div>
       <div>
-        <p><strong>Enemy</strong></p>
-        ${
-          enemyImg
-            ? `<img src="${enemyImg}" alt="${spirit.enemy}" class="side-spirit-img" />`
-            : `<p>No known enemies</p>`
-        }
+        ${currentQ > 0 ? `<button class="button-55" onclick="goBack()">Back</button>` : ''}
+        ${currentQ < total - 1 ? '' : `<button class="button-55" onclick="calculateResult()">View Result</button>`}
       </div>
     </div>
-
-    <p>Share your result!</p>
-    <p>
-      <a href="https://www.instagram.com/chamealone" target="_blank">@chamealone</a><br>
-      <a href="#" onclick="copyLink()">Copy Link 🔗</a>
-    </p>
   `;
-
-  quizSection.style.display = "none";
-  resultSection.style.display = "block";
 }
+
 
 function copyLink() {
   navigator.clipboard.writeText(window.location.href).then(() => {
