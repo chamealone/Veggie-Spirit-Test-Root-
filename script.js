@@ -234,6 +234,50 @@ function renderQuestion() {
     </div>
   `;
 }
+function showResult(spiritKey) {
+  const spirit = spiritProfiles[spiritKey];
+  const name = usernameInput.value.trim();
+
+  const friendImg = spirit.friend ? `images/${spiritProfiles[spirit.friend].img}` : null;
+  const enemyImg = spirit.enemy ? `images/${spiritProfiles[spirit.enemy]?.img}` : null;
+
+  resultSection.innerHTML = `
+    <h2>${name}, your Spirit Veggie is:</h2>
+    <h3>${spirit.name}</h3>
+    <img src="images/${spirit.img}" alt="${spirit.name}" class="main-spirit-img" />
+    <p><strong>Description:</strong> ${spirit.description}</p>
+    <p><strong>Ability:</strong> ${spirit.ability}</p>
+    <p><strong>Supports:</strong> ${spirit.supports}</p>
+
+    <div class="spirit-relations">
+      <div>
+        <p><strong>Friend</strong></p>
+        ${
+          friendImg
+            ? `<img src="${friendImg}" alt="${spirit.friend}" class="side-spirit-img" />`
+            : `<p>No bestie found</p>`
+        }
+      </div>
+      <div>
+        <p><strong>Enemy</strong></p>
+        ${
+          enemyImg
+            ? `<img src="${enemyImg}" alt="${spirit.enemy}" class="side-spirit-img" />`
+            : `<p>No known enemies</p>`
+        }
+      </div>
+    </div>
+
+    <p>Share your result!</p>
+    <p>
+      <a href="https://www.instagram.com/chamealone" target="_blank">@chamealone</a><br>
+      <a href="#" onclick="copyLink()">Copy Link 🔗</a>
+    </p>
+  `;
+
+  quizSection.style.display = "none";
+  resultSection.style.display = "block";
+}
 
 
 function copyLink() {
