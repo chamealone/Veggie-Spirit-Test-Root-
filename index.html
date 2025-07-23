@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Spirit Veggie Quiz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spirit Veggie Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Home Section -->
+    <section id="home">
+      <h1>What Spirit Veggie Do You Need Today?</h1>
+      <img src="images/cover.png" alt="Spirit Veggie Cover" class="cover-img" />
+      <p class="intro-text">
+        Take this soft & silly quiz to meet your emotional veggie companion
+        ✨<br />
+        Ready to discover yours?
+      </p>
 
-  <!-- Home Section -->
-  <section id="home">
-    <h1>What Spirit Veggie Do You Need Today?</h1>
-    <img src="images/cover.png" alt="Spirit Veggie Cover" class="cover-img" />
-    <p class="intro-text">
-      Take this soft & silly quiz to meet your emotional veggie companion ✨<br/>
-      Ready to discover yours?
-    </p>
+      <div class="InputContainer">
+        <input
+          id="name-input"
+          class="input"
+          type="text"
+          placeholder="Hi, what's your name?"
+        />
+      </div>
 
-    <div class="InputContainer">
-      <input id="name-input" class="input" type="text" placeholder="Hi, what's your name?" />
-    </div>
+      <button id="start-btn" class="button-55">Start the Test</button>
+    </section>
 
-    <button id="start-btn" class="button-55">Start the Test</button>
-  </section>
+    <!-- Quiz Section -->
+    <section id="quiz" style="display: none"></section>
 
-  <!-- Quiz Section -->
-  <section id="quiz" style="display: none;"></section>
+    <!-- Result Section -->
+    <section id="result" style="display: none"></section>
 
-  <!-- Result Section -->
-  <section id="result" style="display: none;"></section>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
