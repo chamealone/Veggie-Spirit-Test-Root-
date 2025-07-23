@@ -1,33 +1,40 @@
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Spirit Veggie Test</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Poppins&family=Neucha&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-  <title>Spirit Veggie Quiz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <section id="home">
-      <h1>What Spirit Veggie Do You Need Today?</h1>
-      <img src="images/cover.png" alt="Spirit Veggie Cover" class="cover-img" />
-      <p>Welcome to the Spirit Veggie Test — a gentle personality quiz to find out which healing veggie your soul needs right now. Each Spirit Veggie is a small guardian for a different kind of emotional need: grounding, crying, hope, quiet, or soft protection. Ready to meet yours?</p>
-      <button id="start-btn" class="button-55" role="button">Start the Test</button>
-    </section>
+/* Tambahkan ke style.css atau <style> di HTML */
+.button-55 {
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
 
-    <section id="quiz" style="display:none;"></section>
-    <section id="result" class="result" style="display:none;"></section>
-  </div>
-  <section id="home">
-    <h1>Find Your Spirit Veggie</h1>
-    <button id="start-btn" class="button-55" role="button">Start the Test</button>
-  </section>
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
 
-  <section id="quiz" style="display: none;"></section>
-
-  <section id="result" style="display: none;"></section>
-
-  <script src="script.js"></script>
-</body>
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
