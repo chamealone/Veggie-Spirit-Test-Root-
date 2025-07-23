@@ -198,11 +198,15 @@ function showResult(spiritKey) {
   resultSection.innerHTML = `
     <h2>Your Spirit Veggie is: ${spirit.name}</h2>
     <img src="${spirit.img}" alt="${spirit.name}" />
-    <p><strong>Personality:</strong> ${spirit.personality}</p>
+    <p><strong>Description:</strong> ${spirit.description}</p>
     <p><strong>Ability:</strong> ${spirit.ability}</p>
+    <p><strong>Who you support:</strong> ${spirit.supports}</p>
+    
     <h3>Spirit Friend:</h3>
     <img src="${friendImg}" alt="${spirit.friend}" />
+    
     <h3>Enemy Spirit:</h3>
     ${enemyImg ? `<img src="${enemyImg}" alt="${spirit.enemy}" />` : `<p>No known enemies</p>`}
   `;
 }
+
