@@ -2,7 +2,7 @@ const startBtn = document.getElementById("start-btn");
 const homeSection = document.getElementById("home");
 const quizSection = document.getElementById("quiz");
 const resultSection = document.getElementById("result");
-
+const usernameInput = document.getElementById("username");
 const questions = [
   "When you're completely stuck, you tend to...",
   "In your ideal world, people would...",
@@ -148,27 +148,33 @@ let currentQ = 0;
 let selected = [];
 
 startBtn.onclick = () => {
+  const name = usernameInput.value.trim();
+  if (!name) {
+    alert("Please enter your name!");
+    return;
+  }
   homeSection.style.display = "none";
   quizSection.style.display = "block";
   renderQuestion();
 };
 
 function renderQuestion() {
-  const q = questions[currentQ];
+  const total = questions.length;
+  const questionText = questions[currentQ];
   const opts = options[currentQ];
 
   quizSection.innerHTML = `
     <div class="question-box">
-      <h2>${q}</h2>
+      <h2>(${currentQ + 1}/${total}) ${questionText}</h2>
       <div class="options">
-        ${opts.map((opt, i) => `
-          <button class="button-55" onclick="selectOption(${i})">${opt}</button>
-        `).join('')}
+        ${opts.map((opt, i) => {
+          const isSelected = selected[currentQ] === i ? 'selected-option' : '';
+          return `<button class="button-55 ${isSelected}" onclick="selectOption(${i})">${opt}</button>`;
+        }).join('')}
       </div>
-      <div class="nav-buttons">
+      <div>
         ${currentQ > 0 ? `<button class="button-55" onclick="goBack()">Back</button>` : ''}
-        ${selected[currentQ] !== undefined ? `<button class="button-55" onclick="goNext()">Next</button>` : ''}
-        ${currentQ === questions.length - 1 && selected[currentQ] !== undefined ? `<button class="button-55" onclick="finishQuiz()">View Result</button>` : ''}
+        ${currentQ < total - 1 ? '' : `<button class="button-55" onclick="calculateResult()">View Result</button>`}
       </div>
     </div>
   `;
@@ -176,13 +182,11 @@ function renderQuestion() {
 
 function selectOption(index) {
   selected[currentQ] = index;
-  renderQuestion();
-}
-
-function goNext() {
-  if (currentQ < questions.length - 1) {
-    currentQ++;
+  currentQ++;
+  if (currentQ < questions.length) {
     renderQuestion();
+  } else {
+    calculateResult();
   }
 }
 
@@ -193,11 +197,12 @@ function goBack() {
   }
 }
 
-function finishQuiz() {
-  calculateResult();
-}
-
 function calculateResult() {
+  const spiritScores = {
+    Kroot: 0, Banion: 0, Potatoad: 0,
+    Mubii: 0, Onyun: 0, Bitty: 0, Gingeer: 0
+  };
+
   selected.forEach((choiceIndex, questionIndex) => {
     const spirit = spiritMap[questionIndex][choiceIndex];
     spiritScores[spirit]++;
@@ -207,39 +212,39 @@ function calculateResult() {
   showResult(topSpirit);
 }
 
-function showResult(spiritKey) {
-  const spirit = spiritProfiles[spiritKey];
-  const friendImg = spiritProfiles[spirit.friend]?.img;
-  const enemyImg = spirit.enemy ? spiritProfiles[spirit.enemy]?.img : null;
+resultSection.innerHTML = `
+  <h2>${name}, your Spirit Veggie is:</h2>
+  <h3>${spirit.name}</h3>
+  <img src="${spirit.img}" alt="${spirit.name}" class="main-spirit-img" />
+  <p><strong>Personality:</strong> ${spirit.personality}</p>
+  <p><strong>Ability:</strong> ${spirit.ability}</p>
 
-  quizSection.style.display = "none";
-  resultSection.style.display = "block";
+  <div class="spirit-relations">
+    <div>
+      <p><strong>Friend</strong></p>
+      <img src="${friendImg}" alt="${spirit.friend}" class="side-spirit-img" />
+    </div>
+    <div>
+      <p><strong>Enemy</strong></p>
+      ${
+        enemyImg
+          ? `<img src="${enemyImg}" alt="${spirit.enemy}" class="side-spirit-img" />`
+          : `<p>No known enemies</p>`
+      }
+    </div>
+  </div>
 
-  resultSection.innerHTML = `
-    <h2>Your Spirit Veggie is: ${spirit.name}</h2>
-    <img src="${spirit.img}" alt="${spirit.name}" />
-    <p><strong>Description:</strong> ${spirit.description}</p>
-    <p><strong>Ability:</strong> ${spirit.ability}</p>
-    <p><strong>Who you support:</strong> ${spirit.supports}</p>
-    
-    <h3>Spirit Friend:</h3>
-    <img src="${friendImg}" alt="${spirit.friend}" />
+  <p>Share your result!</p>
+  <p>
+    <a href="https://www.instagram.com/chamealone" target="_blank">@chamealone</a><br>
+    <a href="#" onclick="copyLink()">Copy Link 🔗</a>
+  </p>
+`;
 
-    <h3>Enemy Spirit:</h3>
-    ${enemyImg ? `<img src="${enemyImg}" alt="${spirit.enemy}" />` : `<p>No known enemies</p>`}
-
-    <button class="button-55" onclick="restartQuiz()">Restart Test</button>
-  `;
 }
 
-function restartQuiz() {
-  selected = [];
-  currentQ = 0;
-
-  Object.keys(spiritScores).forEach(key => {
-    spiritScores[key] = 0;
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    alert("Link copied to clipboard!");
   });
-
-  resultSection.style.display = "none";
-  homeSection.style.display = "block";
 }
