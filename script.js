@@ -144,7 +144,6 @@ const spiritProfiles = {
   }
 };
 
-
 let currentQ = 0;
 let selected = [];
 
@@ -155,27 +154,47 @@ startBtn.onclick = () => {
 };
 
 function renderQuestion() {
+  const q = questions[currentQ];
+  const opts = options[currentQ];
+
   quizSection.innerHTML = `
     <div class="question-box">
-      <h2>${questions[currentQ]}</h2>
-      <div class="options"></div>
+      <h2>${q}</h2>
+      <div class="options">
+        ${opts.map((opt, i) => `
+          <button class="button-55" onclick="selectOption(${i})">${opt}</button>
+        `).join('')}
+      </div>
+      <div class="nav-buttons">
+        ${currentQ > 0 ? `<button class="button-55" onclick="goBack()">Back</button>` : ''}
+        ${selected[currentQ] !== undefined ? `<button class="button-55" onclick="goNext()">Next</button>` : ''}
+        ${currentQ === questions.length - 1 && selected[currentQ] !== undefined ? `<button class="button-55" onclick="finishQuiz()">View Result</button>` : ''}
+      </div>
     </div>
   `;
-  const optDiv = quizSection.querySelector(".options");
-  options[currentQ].forEach((opt, i) => {
-    const btn = document.createElement("button");
-    btn.innerText = opt;
-    btn.onclick = () => {
-      selected.push(i);
-      currentQ++;
-      if (currentQ < questions.length) {
-        renderQuestion();
-      } else {
-        calculateResult();
-      }
-    };
-    optDiv.appendChild(btn);
-  });
+}
+
+function selectOption(index) {
+  selected[currentQ] = index;
+  renderQuestion();
+}
+
+function goNext() {
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    renderQuestion();
+  }
+}
+
+function goBack() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+  }
+}
+
+function finishQuiz() {
+  calculateResult();
 }
 
 function calculateResult() {
@@ -195,6 +214,7 @@ function showResult(spiritKey) {
 
   quizSection.style.display = "none";
   resultSection.style.display = "block";
+
   resultSection.innerHTML = `
     <h2>Your Spirit Veggie is: ${spirit.name}</h2>
     <img src="${spirit.img}" alt="${spirit.name}" />
@@ -204,9 +224,22 @@ function showResult(spiritKey) {
     
     <h3>Spirit Friend:</h3>
     <img src="${friendImg}" alt="${spirit.friend}" />
-    
+
     <h3>Enemy Spirit:</h3>
     ${enemyImg ? `<img src="${enemyImg}" alt="${spirit.enemy}" />` : `<p>No known enemies</p>`}
+
+    <button class="button-55" onclick="restartQuiz()">Restart Test</button>
   `;
 }
 
+function restartQuiz() {
+  selected = [];
+  currentQ = 0;
+
+  Object.keys(spiritScores).forEach(key => {
+    spiritScores[key] = 0;
+  });
+
+  resultSection.style.display = "none";
+  homeSection.style.display = "block";
+}
