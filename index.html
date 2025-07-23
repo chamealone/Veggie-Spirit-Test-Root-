@@ -53,7 +53,6 @@
       margin: 1rem;
     }
 
-    /* Navigation buttons and counter */
     .navigation {
       display: flex;
       justify-content: center;
@@ -78,7 +77,6 @@
       color: #333;
     }
 
-    /* Button-55 Styles */
     .button-55 {
       align-self: center;
       background-color: #fff;
@@ -132,12 +130,12 @@
 
     <section id="quiz" style="display:none;">
       <div class="question-box">
-        <h2 id="questionText">Question goes here...</h2>
+        <h2 id="questionText">Question will appear here</h2>
         <div class="options" id="answersContainer"></div>
         <div class="navigation">
-          <button id="backBtn" onclick="goToPrevious()" disabled>Back</button>
+          <button id="backBtn">Back</button>
           <span id="questionCounter">Question 1 of 16</span>
-          <button id="nextBtn" onclick="goToNext()">Next</button>
+          <button id="nextBtn">Next</button>
         </div>
       </div>
     </section>
@@ -148,3 +146,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
