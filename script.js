@@ -42,22 +42,22 @@ const options = [
 ];
 
 const spiritMap = [
-  ["Mubii", "Onyun", "Banion", "Kroot", "Jinger"],
-  ["Bitty", "Mubii", "Jinger", "Banion", "Onyun"],
-  ["Potatoad", "Onyun", "Banion", "Bitty", "Jinger"],
-  ["Banion", "Jinger", "Onyun", "Kroot", "Mubii"],
-  ["Banion", "Potatoad", "Jinger", "Mubii", "Bitty"],
-  ["Onyun", "Kroot", "Banion", "Mubii", "Jinger"],
-  ["Jinger", "Banion", "Bitty", "Kroot", "Potatoad"],
-  ["Bitty", "Potatoad", "Jinger", "Mubii", "Onyun"],
-  ["Mubii", "Jinger", "Banion", "Kroot", "Bitty"],
-  ["Onyun", "Bitty", "Potatoad", "Jinger", "Mubii"],
-  ["Mubii", "Banion", "Potatoad", "Onyun", "Jinger"],
-  ["Bitty", "Banion", "Jinger", "Mubii", "Kroot"],
-  ["Jinger", "Potatoad", "Kroot", "Onyun", "Bitty"],
-  ["Onyun", "Bitty", "Jinger", "Banion", "Mubii"],
-  ["Jinger", "Banion", "Kroot", "Bitty", "Mubii"],
-  ["Onyun", "Banion", "Kroot", "Jinger", "Mubii"]
+  ["Mubii", "Onyun", "Banion", "Kroot", "Gingeer"],
+  ["Bitty", "Mubii", "Gingeer", "Banion", "Onyun"],
+  ["Potatoad", "Onyun", "Banion", "Bitty", "Gingeer"],
+  ["Banion", "Gingeer", "Onyun", "Kroot", "Mubii"],
+  ["Banion", "Potatoad", "Gingeer", "Mubii", "Bitty"],
+  ["Onyun", "Kroot", "Banion", "Mubii", "Gingeer"],
+  ["Gingeer", "Banion", "Bitty", "Kroot", "Potatoad"],
+  ["Bitty", "Potatoad", "Gingeer", "Mubii", "Onyun"],
+  ["Mubii", "Gingeer", "Banion", "Kroot", "Bitty"],
+  ["Onyun", "Bitty", "Potatoad", "Gingeer", "Mubii"],
+  ["Mubii", "Banion", "Potatoad", "Onyun", "Gingeer"],
+  ["Bitty", "Banion", "Gingeer", "Mubii", "Kroot"],
+  ["Gingeer", "Potatoad", "Kroot", "Onyun", "Bitty"],
+  ["Onyun", "Bitty", "Gingeer", "Banion", "Mubii"],
+  ["Gingeer", "Banion", "Kroot", "Bitty", "Mubii"],
+  ["Onyun", "Banion", "Kroot", "Gingeer", "Mubii"]
 ];
 
 const spiritScores = {
@@ -67,7 +67,7 @@ const spiritScores = {
   Mubii: 0,
   Onyun: 0,
   Bitty: 0,
-  Jinger: 0
+  Gingeer: 0
 };
 
 const spiritProfiles = {
@@ -100,7 +100,7 @@ const spiritProfiles = {
     img: "images/mubii.png",
     ability: "Repels toxic vibes.",
     personality: "Quiet protector.",
-    friend: "Jinger",
+    friend: "Gingeer",
     enemy: null
   },
   Onyun: {
@@ -117,11 +117,11 @@ const spiritProfiles = {
     ability: "Sparks hope through humor.",
     personality: "Small, cheerful, sensitive.",
     friend: "Kroot",
-    enemy: "Jinger"
+    enemy: "Gingeer"
   },
-  Jinger: {
-    name: "Jinger",
-    img: "images/jinger.png",
+  Gingeer: {
+    name: "Gingeer",
+    img: "images/Gingeer.png",
     ability: "Gives clarity and calm wisdom.",
     personality: "Wise, warm, realistic.",
     friend: "Mubii",
@@ -144,25 +144,6 @@ function renderQuestion() {
       <h2>${questions[currentQ]}</h2>
       <div class="options"></div>
     </div>
-  `;
-  const optDiv = quizSection.querySelector(".options");
-  options[currentQ].forEach((opt, i) => {
-    const btn = document.createElement("button");
-    btn.innerText = opt;
-    btn.classList.add("button-55"); // ✅ Tambahkan class ini
-    btn.onclick = () => {
-      selected.push(i);
-      currentQ++;
-      if (currentQ < questions.length) {
-        renderQuestion();
-      } else {
-        calculateResult();
-      }
-    };
-    optDiv.appendChild(btn);
-  });
-}
-
   `;
   const optDiv = quizSection.querySelector(".options");
   options[currentQ].forEach((opt, i) => {
@@ -209,3 +190,4 @@ function showResult(spiritKey) {
     ${enemyImg ? `<img src="${enemyImg}" alt="${spirit.enemy}" />` : `<p>No known enemies</p>`}
   `;
 }
+
