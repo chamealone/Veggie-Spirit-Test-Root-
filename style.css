@@ -1,58 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-
 body {
-  background-color: #32CD32; /* lime green */
-  font-family: 'Fredoka One', cursive;
-  color: #0a3d00; /* gelap hijau untuk teks supaya kontras */
   margin: 0;
-  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #e1ffac;
+  color: #333;
+  padding: 2rem;
+  text-align: center;
 }
 
-#quiz-section, #result-section {
-  max-width: 600px;
-  margin: 2rem auto;
-  background: #e6ffe6; /* hijau very soft sebagai container bg */
+h1, h2, h3 {
+  font-family: 'Fredoka', sans-serif;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+}
+
+button {
+  background-color: white;
+  color: #333;
+  border: 2px solid #333;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-family: 'Fredoka';
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 0 10px rgba(0,128,0,0.3);
-}
-
-#question-text {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-#choices button {
-  display: block;
-  width: 100%;
-  background: #fff;
-  color: #2e7d32; /* hijau gelap */
-  border: 2px solid #2e7d32;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: 1rem;
+  display: inline-block;
 }
 
-#choices button:hover {
-  background-color: #a5d6a7; /* hijau muda */
-  color: #1b5e20; /* hijau lebih gelap */
+.options button {
+  width: 100%;
+  margin: 0.5rem 0;
 }
 
-#result-name {
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: #1b5e20;
+.cover-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  margin: 1rem 0;
 }
 
-#result-description {
-  font-size: 1.1rem;
+.question-box {
+  margin-bottom: 2rem;
+}
+
+.result {
+  background-color: #fff3d1;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.result img {
+  max-width: 150px;
+  border-radius: 12px;
   margin-bottom: 1rem;
-}
-
-.hidden {
-  display: none;
 }
