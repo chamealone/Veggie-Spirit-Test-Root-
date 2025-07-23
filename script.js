@@ -2,6 +2,7 @@ const startBtn = document.getElementById("start-btn");
 const homeSection = document.getElementById("home");
 const quizSection = document.getElementById("quiz");
 const resultSection = document.getElementById("result");
+btn.classList.add("button-55");
 
 const questions = [
   "When you're completely stuck, you tend to...",
