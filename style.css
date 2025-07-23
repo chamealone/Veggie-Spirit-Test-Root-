@@ -16,10 +16,6 @@ h1, h2, h3 {
   margin: auto;
 }
 
-button {
-<!-- HTML !-->
-<button class="button-73" role="button">Button 73</button>
-
 /* CSS */
 .button-73 {
   appearance: none;
