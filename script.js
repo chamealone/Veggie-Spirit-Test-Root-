@@ -76,7 +76,7 @@ const spiritProfiles = {
     name: "🥕 KROOT – The Guarded Root",
     description:
       "Sarcastic, sharp-tongued, and always acting like they don’t care—but deep down, Kroot gets you. If you’re the type who hides emotions with humor or silence, Kroot becomes your personal safe zone. He won't push you to talk, but he'll stay beside you until you're ready. Your walls? He respects them—but he still shows up.",
-    img: "images/kroot.png",
+    img: "kroot.png",
     ability: "Helps you feel heard and emotionally safe.",
     supports: "The ones who bottle things up but crave to be understood.",
     friend: "Bitty",
@@ -86,7 +86,7 @@ const spiritProfiles = {
     name: "🍠 BANION – The Emotional Flame",
     description:
       "Banion doesn’t fear emotional chaos—he *is* the chaos. If you’re the kind of person who cries in secret or feels things a little “too much,” he's here to remind you: It’s okay to explode, laugh, cry, and be real. No need to hold back anymore. He's intense, but warm—and always in your corner.",
-    img: "images/banion.png",
+    img: "banion.png",
     ability: "Helps you release pent-up emotions.",
     supports: "Deep feelers who try to keep it all together… until they can’t.",
     friend: "Mubii",
@@ -96,7 +96,7 @@ const spiritProfiles = {
     name: "🥔 POTATOAD – The Resting Healer",
     description:
       "Tired? Good. You’re allowed to be. Potatoad appears when you're exhausted from pretending you're okay. He’s the spirit who tells you that naps are sacred, quiet is powerful, and doing “nothing” is absolutely something. No pressure, no expectations—just gentle support from your cozy sidekick.",
-    img: "images/potatoad.png",
+    img: "potatoad.png",
     ability: "Teaches you that rest is valid.",
     supports: "The overworked, burned-out, and emotionally drained.",
     friend: "Onyun",
@@ -106,7 +106,7 @@ const spiritProfiles = {
     name: "🧊 MUBII – The Silent Shield",
     description:
       "Mubii doesn’t talk much—but you’ll feel safer when he’s around. He’s the quiet protector, the invisible force field. If you're the kind who easily gets drained by others, Mubii is your emotional bouncer. Soft-hearted, strong-souled, and always watching out for you—even when you don’t notice.",
-    img: "images/mubii.png",
+    img: "mubii.png",
     ability: "Repels toxic vibes and negative energy.",
     supports: "Sensitive souls who absorb too much from the world around them.",
     friend: "Gingeer",
@@ -116,7 +116,7 @@ const spiritProfiles = {
     name: "🧅 ONYUN – The Fierce Heart",
     description:
       "Onyun barks a lot—but only because he cares. He’s reactive, intense, and unapologetically loyal. If you're the kind of person who gives your all and gets hurt too often, Onyun becomes your fierce protector. He defends your boundaries like a tiny warrior with a big heart.",
-    img: "images/onyun.png",
+    img: "onyun.png",
     ability: "Fiercely loyal, protects your heart.",
     supports: "Those who feel everything too deeply and love too hard.",
     friend: "Potatoad",
@@ -126,7 +126,7 @@ const spiritProfiles = {
     name: "🌟 BITTY – The Hope Spark",
     description:
       "Bitty is small, but mighty in spirit. He shows up when the world feels too gray. If you're the one who’s always cheering others up while carrying your own weight, Bitty is your mirror—and your spark. He reminds you that even the smallest light can change the whole room.",
-    img: "images/bitty.png",
+    img: "bitty.png",
     ability: "Sparks joy and lightens heavy hearts.",
     supports: "The sensitive, cheerful ones who hide their sadness behind smiles.",
     friend: "Kroot",
@@ -136,7 +136,7 @@ const spiritProfiles = {
     name: "🍃 GINGEER – The Grounded Clarity",
     description:
       "Gingeer speaks softly but never vaguely. He shows up when you feel mentally cluttered or emotionally foggy. If you're the kind who chases answers, meaning, or closure, Gingeer grounds you. He won’t sugarcoat—but he’ll help you see what’s real. Clarity can be hard—but it's healing.",
-    img: "images/Gingeer.png",
+    img: "Gingeer.png",
     ability: "Gives clarity and calm wisdom.",
     supports: "Overthinkers, truth-seekers, and those stuck in spirals.",
     friend: "Mubii",
