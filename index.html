@@ -7,29 +7,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #b5ce8a; font-family: 'Poppins', sans-serif;">
+<body>
 
   <!-- Home Section -->
   <section id="home">
     <h1>What Spirit Veggie Do You Need Today?</h1>
     <img src="images/cover.png" alt="Spirit Veggie Cover" class="cover-img" />
-    <p>
-      Welcome to the Spirit Veggie Test — a gentle personality quiz to find out which healing veggie your soul needs right now.
-      Each Spirit Veggie is a small guardian for a different kind of emotional need: grounding, crying, hope, quiet, or soft protection.
-      Ready to meet yours?
+    <p class="intro-text">
+      Take this soft & silly quiz to meet your emotional veggie companion ✨<br/>
+      Ready to discover yours?
     </p>
 
     <div class="InputContainer">
       <input id="name-input" class="input" type="text" placeholder="Hi, what's your name?" />
     </div>
 
-    <button id="start-btn" class="button-55" role="button">Start the Test</button>
+    <button id="start-btn" class="button-55">Start the Test</button>
   </section>
 
-  <!-- Quiz Section (initially hidden) -->
+  <!-- Quiz Section -->
   <section id="quiz" style="display: none;"></section>
 
-  <!-- Result Section (initially hidden) -->
+  <!-- Result Section -->
   <section id="result" style="display: none;"></section>
 
   <script src="script.js"></script>
